@@ -1,0 +1,12 @@
+syntax = "proto3";
+package fadeev.templateibcv4.foobar;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/fadeev/templateIBCv4/x/foobar/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+}

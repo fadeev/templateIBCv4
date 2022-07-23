@@ -1,0 +1,18 @@
+syntax = "proto3";
+package fadeev.templateibcv4.foobar;
+
+// this line is used by starport scaffolding # proto/packet/import
+
+option go_package = "github.com/fadeev/templateIBCv4/x/foobar/types";
+
+message FoobarPacketData {
+    oneof packet {
+        NoData noData = 1;
+        // this line is used by starport scaffolding # ibc/packet/proto/field
+    }
+}
+
+message NoData {
+}
+
+// this line is used by starport scaffolding # ibc/packet/proto/message
