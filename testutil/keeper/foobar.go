@@ -10,7 +10,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	capabilitykeeper "github.com/cosmos/cosmos-sdk/x/capability/keeper"
 	typesparams "github.com/cosmos/cosmos-sdk/x/params/types"
-	ibckeeper "github.com/cosmos/ibc-go/v3/modules/core/keeper"
+	ibckeeper "github.com/cosmos/ibc-go/v4/modules/core/keeper"
 	"github.com/fadeev/templateIBCv4/x/foobar/keeper"
 	"github.com/fadeev/templateIBCv4/x/foobar/types"
 	"github.com/stretchr/testify/require"
