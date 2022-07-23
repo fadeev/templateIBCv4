@@ -84,15 +84,13 @@ import (
 	ibcporttypes "github.com/cosmos/ibc-go/v3/modules/core/05-port/types"
 	ibchost "github.com/cosmos/ibc-go/v3/modules/core/24-host"
 	ibckeeper "github.com/cosmos/ibc-go/v3/modules/core/keeper"
+	encparams "github.com/fadeev/templateIBCv4/app/params"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	"github.com/tendermint/tendermint/libs/log"
 	tmos "github.com/tendermint/tendermint/libs/os"
 	dbm "github.com/tendermint/tm-db"
-
-	"github.com/ignite/cli/ignite/pkg/cosmoscmd"
-	"github.com/ignite/cli/ignite/pkg/openapiconsole"
 
 	"github.com/fadeev/templateIBCv4/docs"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
@@ -165,7 +163,6 @@ var (
 )
 
 var (
-	_ cosmoscmd.App           = (*App)(nil)
 	_ servertypes.Application = (*App)(nil)
 	_ simapp.App              = (*App)(nil)
 )
@@ -236,10 +233,10 @@ func New(
 	skipUpgradeHeights map[int64]bool,
 	homePath string,
 	invCheckPeriod uint,
-	encodingConfig cosmoscmd.EncodingConfig,
+	encodingConfig encparams.EncodingConfig,
 	appOpts servertypes.AppOptions,
 	baseAppOptions ...func(*baseapp.BaseApp),
-) cosmoscmd.App {
+) *App {
 	appCodec := encodingConfig.Marshaler
 	cdc := encodingConfig.Amino
 	interfaceRegistry := encodingConfig.InterfaceRegistry
@@ -648,7 +645,6 @@ func (app *App) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig
 
 	// register app's OpenAPI routes.
 	apiSvr.Router.Handle("/static/openapi.yml", http.FileServer(http.FS(docs.Docs)))
-	apiSvr.Router.HandleFunc("/", openapiconsole.Handler(Name, "/static/openapi.yml"))
 }
 
 // RegisterTxService implements the Application.RegisterTxService method.
