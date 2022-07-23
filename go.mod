@@ -8,7 +8,6 @@ require (
 	github.com/ignite/cli v0.22.2
 	github.com/spf13/cast v1.4.1
 	github.com/stretchr/testify v1.7.1
-	github.com/tendermint/spn v0.2.1-0.20220610090138-44b136f042c4
 	github.com/tendermint/tendermint v0.34.19
 	github.com/tendermint/tm-db v0.6.7
 	golang.org/x/net v0.0.0-20220624214902-1bab6f366d9e // indirect
